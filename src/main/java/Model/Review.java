@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class Review {
     private String reviewId;
-    private String exchangeId;
-    private String reviewerId;
-    private String revieweeId;
+    private Exchange exchange;
+    private Student reviewer;
+    private Student reviewee;
     private int rating;
     private String comment;
     private String reviewDate;

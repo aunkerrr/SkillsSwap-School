@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class Request {
     private String requestId;
-    private String studentId;
-    private String skillId;
+    private Student student;
+    private Skill skill;
     private String urgencyLevel;
     private String notes;
 }

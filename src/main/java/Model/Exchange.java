@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class Exchange {
     private String exchangeId;
-    private String requesterId;
-    private String providerId;
-    private String skillId;
+    private Offer offer;
+    private Request request;
     private String status;
+    private String date;
 }

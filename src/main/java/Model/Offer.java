@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Offer {
-    private String studentId;
-    private String skillId;
+    private String offerId;
+    private Student student;
+    private Skill skill;
     private String proficiencyLevel;
     private List<String> notes;
+    private boolean active;
 }
