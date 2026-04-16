@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Skill {
+public class MatchingResult {
 
-    private String id;
-    private String name;
-    private String category;
+    private String offerId;
+    private String requestId;
+    private int score;
+    private String reason;
 }
