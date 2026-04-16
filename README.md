@@ -26,3 +26,15 @@ https://stackoverflow.com/questions/3441090/what-is-composition-as-it-relates-to
 My personal opinion is that this mechanism should be
 used over Inheritance (sometimes), which in some cases is going to be more annoying
 to use also as implement (Inheritance mechanisms).
+
+Added IdGeneratorImpl and it's constructor private just to be sure that nobody calls it
+generates so random ids that's almost impossible that they will be same.
+
+Added StudentService for functionality realization (such as student adding) and separation it from main to make main as clear as
+it possible.
+
+SkillSwapState serves as a RAM storage for our project which occupies pretty small memory
+and has pretty great researching speed cause its realization based on HashMap.
+
+InMemoryStorage is a method for further functionality such as csv saving and loading
+which later could be possibly transformed to work with database.
