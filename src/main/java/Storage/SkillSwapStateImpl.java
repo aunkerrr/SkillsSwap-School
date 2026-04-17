@@ -1,8 +1,12 @@
 package Storage;
 
-import Model.*;
+import Model.Exchange;
+import Model.Offer;
+import Model.Request;
+import Model.Review;
+import Model.Skill;
+import Model.Student;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
