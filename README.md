@@ -38,3 +38,18 @@ and has pretty great researching speed cause its realization based on HashMap.
 
 InMemoryStorage is a method for further functionality such as csv saving and loading
 which later could be possibly transformed to work with database.
+
+Why String for menus: Using scanner.nextLine() avoids the classic "Scanner bug"
+(where nextInt() leaves a hidden \n in the buffer, skipping the next input).
+It also prevents the application from immediately crashing with an
+InputMismatchException if the user accidentally types a letter.
+
+Elegant Error Handling: By passing the String directly into the switch
+statement, any invalid input naturally falls into the default case.
+This handles bad inputs gracefully without needing a messy try-catch block.
+
+Solving the int problem: When an integer is strictly required
+(like the class number), the solution is to read the input as a String first
+and manually convert it using Integer.parseInt().
+This specific conversion is then wrapped in a try-catch (NumberFormatException)
+to catch typing mistakes safely without breaking the input flow.

@@ -35,6 +35,21 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void printAllStudent() {
+        if (state.getStudents().isEmpty()) {
+            System.out.println("There is no students registrated in system...");
+            return;
+        }
 
+        System.out.println("\n--- List of students SkillSwap ---\n");
+
+        for (Student s : state.getStudents().values()) {
+            String shortId = s.getStudentID().substring(0, 8);
+            System.out.println("[" + shortId + "...]"
+                    + s.getName() + " " + s.getSurname() + " | Class: " + s.getClassNumber()
+                    + " " + s.getSectionLetter() + " | Contacts: " + s.getEmail() + " "
+                    + s.getPhoneNumber()) ;
+        }
+
+        System.out.println("----------------------------------\n");
     }
 }
