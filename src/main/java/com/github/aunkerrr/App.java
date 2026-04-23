@@ -5,10 +5,8 @@ import Service.StudentServiceImpl;
 import Storage.SkillSwapState;
 import Storage.SkillSwapStateImpl;
 import Util.*;
-import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
 
 import java.util.Scanner;
-import java.util.UUID;
 
 public class App {
     public static void main(String[] args) {
@@ -61,7 +59,7 @@ public class App {
         System.out.println("Enter the Surname: ");
         String surname = scanner.nextLine();
 
-        String validEmail = "";
+        String validEmail;
         while (true) {
             System.out.println("Enter the Email (example, student@gmail.com): ");
             String rawEmail = scanner.nextLine();
@@ -75,7 +73,7 @@ public class App {
         }
 
 
-        String formattedPhone = "";
+        String formattedPhone;
         while (true) {
             System.out.println("Enter your phone number (e.g. +39 320 123 4567 or no code): ");
             String rawPhone = scanner.nextLine();
@@ -87,7 +85,7 @@ public class App {
             }
         }
 
-        int classNum = 0;
+        int classNum;
         while (true) {
             try {
                 System.out.print("Insert number of class(only number): ");
@@ -102,7 +100,7 @@ public class App {
             }
         }
 
-        System.out.println("Enter the class lettter: (example, B, C, CT, AIT)");
+        System.out.println("Enter the class letter: (example, B, C, CT, AIT)");
         String section = scanner.nextLine();
 
         studentService.registerStudent(uuid, name, surname, validEmail, formattedPhone, classNum, section);
