@@ -1,5 +1,6 @@
 package Util;
 
 public interface PhoneValidator {
-    boolean PhoneValidator(String phone);
+    boolean isValid(String phone);
+    String numberFormatter(String phone);
 }
