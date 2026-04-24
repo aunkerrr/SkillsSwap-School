@@ -53,3 +53,15 @@ Solving the int problem: When an integer is strictly required
 and manually convert it using Integer.parseInt().
 This specific conversion is then wrapped in a try-catch (NumberFormatException)
 to catch typing mistakes safely without breaking the input flow.
+
+Livened up the interface: Created the main App.java loop with a
+text menu (TUI) that is resistant to input errors.
+
+Implemented industry standards: Connected to Google's libphonenumber
+library for smart validation and formatting of phones (linked to the IT region).
+
+We protected the data: We wrote EmailValidator using regular expressions
+and added "safe" number input with NumberFormatException handling.
+
+We've improved the architecture: We've separated the code into
+interfaces and implementations (Impl), following SOLID principles. Validation logic is now separated from menu logic.
