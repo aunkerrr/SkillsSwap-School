@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        NameValidator nameValidator = new NameValidatorImpl();
         EmailValidator emailValidator = new EmailValidatorImpl();
         PhoneValidator phoneValidator = new PhoneValidatorImpl();
         SkillSwapState state = new SkillSwapStateImpl();
@@ -30,7 +29,7 @@ public class App {
 
             switch (choice) {
                 case "1":
-                    registerStudentMenu(scanner, studentService, phoneValidator, emailValidator, nameValidator);
+                    registerStudentMenu(scanner, studentService, phoneValidator, emailValidator);
                     break;
                 case "2":
                     studentService.printAllStudent();
@@ -49,37 +48,16 @@ public class App {
     public static void registerStudentMenu(Scanner scanner,
                                            StudentService studentService,
                                            PhoneValidator phoneValidator,
-                                           EmailValidator emailValidator,
-                                           NameValidator nameValidator) {
+                                           EmailValidator emailValidator) {
         System.out.println("\n   ---Student Registration---   ");
 
-        String validName;
-        while (true) {
-            System.out.println("Enter the Name: ");
-            String rawName = scanner.nextLine();
-
-            if (nameValidator.isValid(rawName)) {
-                validName = rawName;
-                break;
-            } else {
-                System.out.println("Error: Invalid email format! Check the '@' and domain.");
-            }
-        }
-
-        String validSurname;
-        while (true) {
-            System.out.println("Enter the Surname: ");
-            String rawSurname = scanner.nextLine();
-
-            if (nameValidator.isValid(rawSurname)) {
-                validSurname = rawSurname;
-                break;
-            } else {
-                System.out.println("Error: Invalid email format! Check the '@' and domain.");
-            }
-        }
-
         String uuid = IdGeneratorImpl.generateUuid();
+
+        System.out.println("Enter the Name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter the Surname: ");
+        String surname = scanner.nextLine();
 
         String validEmail;
         while (true) {
@@ -125,7 +103,7 @@ public class App {
         System.out.println("Enter the class letter: (example, B, C, CT, AIT)");
         String section = scanner.nextLine();
 
-        studentService.registerStudent(uuid, validName, validSurname, validEmail, formattedPhone, classNum, section);
+        studentService.registerStudent(uuid, name, surname, validEmail, formattedPhone, classNum, section);
     }
 }
 

@@ -1,7 +1,7 @@
 package Util;
 
 public class NameValidatorImpl implements NameValidator {
-    private static final String NAME_REGEX = "^[A-Za-zА-Яа-я\\s\\-]+$";
+    private static final String NAME_REGEX = "^[A-Za-zа-яА-яЁё\\s\\-]+$";
 
     @Override
     public boolean isValid(String name) {
