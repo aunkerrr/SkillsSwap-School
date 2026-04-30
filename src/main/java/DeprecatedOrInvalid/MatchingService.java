@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/* WHY: This package uses deprecated and hard to moderate style which is also connected to model which
+* wasn't satisfying all the conditions such as composting mechanism which is described in README.md
+* and also methods wasn't satisfying all coding conditions of the project such as checkstyle etc...*/
+
 @Deprecated
 public class MatchingService {
 
