@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        NameValidator nameValidator = new NameValidatorImpl();
         EmailValidator emailValidator = new EmailValidatorImpl();
         PhoneValidator phoneValidator = new PhoneValidatorImpl();
         SkillSwapState state = new SkillSwapStateImpl();
@@ -29,7 +30,11 @@ public class App {
 
             switch (choice) {
                 case "1":
-                    registerStudentMenu(scanner, studentService, phoneValidator, emailValidator);
+                    registerStudentMenu(scanner,
+                            studentService,
+                            phoneValidator,
+                            emailValidator,
+                            nameValidator);
                     break;
                 case "2":
                     studentService.printAllStudent();
@@ -48,16 +53,38 @@ public class App {
     public static void registerStudentMenu(Scanner scanner,
                                            StudentService studentService,
                                            PhoneValidator phoneValidator,
-                                           EmailValidator emailValidator) {
+                                           EmailValidator emailValidator,
+                                           NameValidator nameValidator) {
         System.out.println("\n   ---Student Registration---   ");
 
         String uuid = IdGeneratorImpl.generateUuid();
 
-        System.out.println("Enter the Name: ");
-        String name = scanner.nextLine();
+        String validName;
+        while (true) {
+            System.out.println("Enter the Name (e.g. Alex, Max): ");
+            String rawName = scanner.nextLine();
 
-        System.out.println("Enter the Surname: ");
-        String surname = scanner.nextLine();
+            if (nameValidator.isValid(rawName)) {
+                validName = rawName;
+                break;
+            } else {
+                System.out.println("Error: Enter the valid name. (Check if there is not numbers present in)");
+            }
+        }
+
+        String validSurname;
+        while (true) {
+            System.out.println("Enter the Surname (e.g. Ricci, Matteo): ");
+            String rawSurname = scanner.nextLine();
+
+            if (nameValidator.isValid(rawSurname)) {
+                validSurname = rawSurname;
+                break;
+            } else {
+                System.out.println("Error: Enter the valid surname. (Check if there is not numbers present in)");
+            }
+        }
+
 
         String validEmail;
         while (true) {
@@ -103,7 +130,7 @@ public class App {
         System.out.println("Enter the class letter: (example, B, C, CT, AIT)");
         String section = scanner.nextLine();
 
-        studentService.registerStudent(uuid, name, surname, validEmail, formattedPhone, classNum, section);
+        studentService.registerStudent(uuid, validName, validSurname, validEmail, formattedPhone, classNum, section);
     }
 }
 
