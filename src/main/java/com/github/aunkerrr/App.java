@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        LetterValidator letterValidator = new LetterValidatorImpl();
         NameValidator nameValidator = new NameValidatorImpl();
         EmailValidator emailValidator = new EmailValidatorImpl();
         PhoneValidator phoneValidator = new PhoneValidatorImpl();
@@ -34,7 +35,8 @@ public class App {
                             studentService,
                             phoneValidator,
                             emailValidator,
-                            nameValidator);
+                            nameValidator,
+                            letterValidator);
                     break;
                 case "2":
                     studentService.printAllStudent();
@@ -54,7 +56,8 @@ public class App {
                                            StudentService studentService,
                                            PhoneValidator phoneValidator,
                                            EmailValidator emailValidator,
-                                           NameValidator nameValidator) {
+                                           NameValidator nameValidator,
+                                           LetterValidator letterValidator) {
         System.out.println("\n   ---Student Registration---   ");
 
         String uuid = IdGeneratorImpl.generateUuid();
@@ -112,12 +115,12 @@ public class App {
             }
         }
 
-        int classNum;
+        int validClassNum;
         while (true) {
             try {
-                System.out.print("Insert number of class(only number): ");
-                classNum = Integer.parseInt(scanner.nextLine());
-                if (classNum > 0 && classNum < 20) {
+                System.out.print("Insert number of class (only number): ");
+                validClassNum = Integer.parseInt(scanner.nextLine());
+                if (validClassNum > 0 && validClassNum < 20) {
                     break;
                 } else {
                     System.out.println("Error: Class number must be between 1 and 20.");
@@ -127,10 +130,21 @@ public class App {
             }
         }
 
-        System.out.println("Enter the class letter: (example, B, C, CT, AIT)");
-        String section = scanner.nextLine();
+        String validSection;
+        while (true ) {
+            System.out.println("Enter the class letter: (example, B, C, CT, AIT)");
+            String rawSection = scanner.nextLine();
 
-        studentService.registerStudent(uuid, validName, validSurname, validEmail, formattedPhone, classNum, section);
+            if (letterValidator.isValid(rawSection)) {
+                validSection = rawSection;
+                break;
+            }
+
+            System.out.println("Error: Invalid section name. " +
+                    "Check if there is not bigger letter quantity of letters than 5");
+        }
+
+        studentService.registerStudent(uuid, validName, validSurname, validEmail, formattedPhone, validClassNum, validSection);
     }
 }
 

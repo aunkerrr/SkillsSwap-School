@@ -1,5 +1,5 @@
 package Util;
 
 public interface LetterValidator {
-    boolean isValid();
+    boolean isValid(String letters);
 }
