@@ -1,10 +1,13 @@
-package Model;
+package DeprecatedOrInvalid;
 
+import Model.Offer;
+import Model.Request;
 import Storage.SkillSwapState;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Deprecated
 public class MatchingService {
 
     private final SkillSwapState state;

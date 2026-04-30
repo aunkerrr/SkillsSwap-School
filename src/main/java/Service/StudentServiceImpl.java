@@ -27,14 +27,14 @@ public class StudentServiceImpl implements StudentService{
 
         state.getStudents().put(id, newStudent);
 
-    logger.info("Registrated student: {} {} (ID:{})", name, surname, id);
+    logger.info("Registered student: {} {} (ID:{})", name, surname, id);
     
     }
 
     @Override
     public void printAllStudent() {
         if (state.getStudents().isEmpty()) {
-            System.out.println("There is no students registrated in system...");
+            System.out.println("There is no students registered in system...");
             return;
         }
 
