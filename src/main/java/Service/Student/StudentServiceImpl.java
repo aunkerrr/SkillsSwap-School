@@ -1,4 +1,4 @@
-package Service;
+package Service.Student;
 
 import Model.Student;
 import Storage.SkillSwapState;
@@ -6,7 +6,7 @@ import Util.IdGeneratorImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
     private static final Logger logger = LoggerFactory.getLogger(StudentServiceImpl.class);
 
     private final SkillSwapState state;
@@ -16,19 +16,19 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void registerStudent(String studentID, String name, String surname,
+    public void registerStudent(String name, String surname,
                                 String email, String phoneNumber,
                                 int classNumber, String sectionLetter) {
-        String id = IdGeneratorImpl.generateUuid();
+        String uuid = IdGeneratorImpl.generateUuid();
 
-        Student newStudent = new Student(id, name,
+        Student newStudent = new Student(uuid, name,
                 surname, email, phoneNumber,
                 classNumber, sectionLetter);
 
-        state.getStudents().put(id, newStudent);
+        state.getStudents().put(uuid, newStudent);
 
-    logger.info("Registered student: {} {} (ID:{})", name, surname, id);
-    
+        logger.info("Registered student: {} {} (ID:{})", name, surname, uuid);
+
     }
 
     @Override

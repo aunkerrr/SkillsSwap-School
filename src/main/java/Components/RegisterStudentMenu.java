@@ -1,6 +1,6 @@
 package Components;
 
-import Service.StudentService;
+import Service.Student.StudentService;
 import Util.*;
 
 import java.util.Scanner;
@@ -13,8 +13,6 @@ public class RegisterStudentMenu {
                                 NameValidator nameValidator,
                                 LetterValidator letterValidator) {
         System.out.println("\n   ---Student Registration---   ");
-
-        String uuid = IdGeneratorImpl.generateUuid();
 
         String validName;
         while (true) {
@@ -98,6 +96,6 @@ public class RegisterStudentMenu {
                     "Check if there is not bigger letter quantity of letters than 5");
         }
 
-        studentService.registerStudent(uuid, validName, validSurname, validEmail, formattedPhone, validClassNum, validSection);
+        studentService.registerStudent(validName, validSurname, validEmail, formattedPhone, validClassNum, validSection);
     }
 }

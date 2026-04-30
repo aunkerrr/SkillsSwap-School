@@ -1,11 +1,7 @@
-package Service;
-
-import Model.Skill;
-import Storage.SkillSwapState;
+package Service.Student;
 
 public interface StudentService {
-    void registerStudent(String studentID,
-                         String name,
+    void registerStudent(String name,
                          String surname,
                          String email,
                          String phoneNumber,

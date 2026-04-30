@@ -1,8 +1,8 @@
 package com.github.aunkerrr;
 
 import Components.RegisterStudentMenu;
-import Service.StudentService;
-import Service.StudentServiceImpl;
+import Service.Student.StudentService;
+import Service.Student.StudentServiceImpl;
 import Storage.SkillSwapState;
 import Storage.SkillSwapStateImpl;
 import Util.*;
