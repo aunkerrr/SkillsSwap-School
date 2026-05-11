@@ -1,7 +1,9 @@
 package DeprecatedOrInvalid;
+
 /* WHY:
 * Because there was already model which
 * satisfied all the requests */
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

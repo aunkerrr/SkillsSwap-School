@@ -4,13 +4,11 @@ import Model.Offer;
 import Model.Skill;
 import Model.Student;
 import Storage.SkillSwapState;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-@Slf4j
 public class OfferServiceImpl implements OfferService{
     private static final Logger logger = Logger.getLogger(OfferServiceImpl.class.getName());
 
@@ -48,11 +46,26 @@ public class OfferServiceImpl implements OfferService{
                 .filter(Offer::isActive)
                 .collect(Collectors.toList());
 
-        return List.of();
+        logger.info("Returned " + allActiveOffers.size() + " active offers ");
+        return allActiveOffers;
     }
 
     @Override
     public List<Offer> getOfferByStudentId(String studentId) {
-        return List.of();
+        logger.info("Research of Offers based on student's email: " + studentId);
+
+        List<Offer> studentOffers = state.getOffers()
+                .values()
+                .stream()
+                .filter(offer -> offer.getStudent().getStudentID().equals(studentId))
+                .collect(Collectors.toList());
+
+        if(studentOffers.isEmpty()) {
+            logger.warning("Student with ID {" + studentId + "} still don't have created offers.");
+        } else {
+            logger.info("Found " + studentOffers + " for the student.");
+        }
+
+        return studentOffers;
     }
 }
