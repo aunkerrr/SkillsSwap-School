@@ -1,0 +1,4 @@
+studentId,name,surname,email,phoneNumber,classNumber,sectionLetter
+550e8400-e29b-41d4-a716-446655440000,Alex,Rossi,alex@it.it,+393201234567,10,AIT
+123e4567-e89b-12d3-a456-426614174000,Maria,Bianchi,maria@it.it,+393409876543,10,AIT
+987e6543-e21b-12d3-a456-426614174111,Luca,Verdi,luca@it.it,+393331122334,11,B

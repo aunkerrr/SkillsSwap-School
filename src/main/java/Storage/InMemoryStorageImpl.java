@@ -15,6 +15,6 @@ public class InMemoryStorageImpl implements InMemoryStorage {
 
     @Override
     public void save(SkillSwapStateImpl state) {
-        logger.info("Data saved im RAM");
+        logger.info("Data saved in RAM");
     }
 }

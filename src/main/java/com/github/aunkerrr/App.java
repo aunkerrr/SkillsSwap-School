@@ -1,8 +1,11 @@
 package com.github.aunkerrr;
 
+import Components.ListAllStudentMenu;
 import Components.RegisterStudentMenu;
 import Service.Student.StudentService;
 import Service.Student.StudentServiceImpl;
+import Storage.CsvLoader.CsvDataLoader;
+import Storage.CsvLoader.CsvDataLoaderImpl;
 import Storage.SkillSwapState;
 import Storage.SkillSwapStateImpl;
 import Util.*;
@@ -18,13 +21,17 @@ public class App {
         PhoneValidator phoneValidator = new PhoneValidatorImpl();
         SkillSwapState state = new SkillSwapStateImpl();
         StudentService studentService = new StudentServiceImpl(state);
+        ListAllStudentMenu listAllStudentMenu = new ListAllStudentMenu();
+        CsvDataLoader csvDataLoader = new CsvDataLoaderImpl();
         Scanner scanner = new Scanner(System.in);
         boolean isAppRunning = true;
+
+        csvDataLoader.loadStudents("data/Students.csv", state);
 
         System.out.println("--- Welcome to SkillSwapSchool system! ---\n");
 
         while (isAppRunning) {
-            System.out.println("\n    === Main menu === ");
+            System.out.println("    === Main menu === ");
             System.out.println("1) Register new student");
             System.out.println("2) Show all present Students");
             System.out.println("Choose action");
@@ -41,7 +48,7 @@ public class App {
                             letterValidator);
                     break;
                 case "2":
-                    studentService.printAllStudent();
+                    listAllStudentMenu.printStudentsMenu(studentService);
                     break;
                 case "0":
                     System.out.println("Exiting from the system... Bye!");

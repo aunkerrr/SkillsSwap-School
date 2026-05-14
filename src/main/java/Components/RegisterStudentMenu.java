@@ -83,7 +83,7 @@ public class RegisterStudentMenu {
         }
 
         String validSection;
-        while (true ) {
+        while (true) {
             System.out.println("Enter the class letter: (example, B, C, CT, AIT)");
             String rawSection = scanner.nextLine();
 

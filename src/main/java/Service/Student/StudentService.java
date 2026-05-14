@@ -1,5 +1,9 @@
 package Service.Student;
 
+import Model.Student;
+
+import java.util.Collection;
+
 public interface StudentService {
     void registerStudent(String name,
                          String surname,
@@ -7,5 +11,5 @@ public interface StudentService {
                          String phoneNumber,
                          int classNumber,
                          String sectionLetter);
-    void printAllStudent();
+    Collection<Student> getAllStudent();
 }

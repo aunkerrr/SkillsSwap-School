@@ -65,3 +65,14 @@ and added "safe" number input with NumberFormatException handling.
 
 We've improved the architecture: We've separated the code into
 interfaces and implementations (Impl), following SOLID principles. Validation logic is now separated from menu logic.
+
+### Fix CsvDataLoader and Logger implementation
+* **Fixed logger syntax:** Replaced invalid `logger.("...")` calls with `logger.error(...)` in catch blocks.
+* **Implemented Factory Pattern:** Properly initialized the SLF4J logger using `LoggerFactory.getLogger()`.
+* **Improved logging performance:** Replaced string concatenation (`+`) with SLF4J parameterized logging (`{}`).
+* **Updated Mock Data:** Updated `students.csv` with strictly valid data (real 128-bit UUIDs and correct Italian phone numbers) to comply with system validators.
+
+### Refactored UI and Business Logic Separation (Single Responsibility Principle)
+* **What we did**: Moved console output (`System.out.println`) from `StudentServiceImpl` into a dedicated UI component (`ListAllStudentMenu`). The `StudentService` now simply returns data collections (`getAllStudent()`).
+* **Why it's good**: This adheres to the **Single Responsibility Principle**. The service layer is no longer tightly coupled to a console environment. It guarantees that the same service can be reused safely and cleanly for web interfaces, REST APIs, or bots without any modification.
+* **Security & Stability impact**: This prevents UI-specific bugs from crashing core business operations. It ensures that raw data handling and output formatting are completely isolated, making testing and debugging significantly more reliable.
